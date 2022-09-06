@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "version": "1.1",
+    "name": "Remove Block Paste",
+    "description": "Remove block paste on the website",
+    "author": "Vinicius Lazzari",
+    "content_scripts":[
+        {
+          "js": [
+            "removeBlockPaste.js"
+          ],
+          "matches": ["<all_urls>"]
+        }
+      ],
+    "icons": {
+        "128": "128.png"
+    }
+}
+

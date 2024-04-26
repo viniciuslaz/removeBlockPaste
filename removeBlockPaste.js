@@ -1,20 +1,32 @@
-window.onload = function () {
-    let namePage = document.title;
+disableEvents = (event) => {
+  let name = document.title;
 
-    disableEvents = (event => {
-        if (namePage.includes('HUAWEI')) {
-            event.stopImmediatePropagation();
-        }
-    });
-    document.addEventListener('paste', disableEvents, true);
+  const pw = document.getElementById("userpassword_ctrl");
+  if (pw) {
+    pw.type = "text";
+  }
 
-    if (namePage.includes("Iniciar sessão")) {
-        let credenciais = document.getElementById("errmsg").innerText;
-        document.getElementById("username").value = "admin"
+  if (name.toLowerCase().includes("huawei")) {
+    event.stopImmediatePropagation();
+  }
+};
+document.addEventListener("paste", disableEvents, true);
 
-        if(credenciais != "Credenciais inválidas"){
-            document.getElementById("password").value = "210802ac"
-            document.querySelector("[type=submit]").click();
-        }
+document.onkeydown = (key) => {
+  let name = document.title;
+  if (name.toLowerCase().includes("huawei")) {
+    const page = window.location.href;
+    console.log(page.includes("internet"))
+    if (page.includes("internet")) {
+      const pw_internet = document.getElementById(
+        "wan_internet_password_ctrl"
+      )?.value;
+      console.log(pw_internet);
     }
-}
+
+    const pw = document.getElementById("userpassword_ctrl");
+    if (pw) {
+      pw.type = "text";
+    }
+  }
+};
